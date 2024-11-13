@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple Web Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #006d77;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #333;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        b {
+            color: #0077b6;
+        }
+
+        .project-container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="project-container">
+        <h1>HEY THERE!!!!</h1>
+        <p>Welcome to <b>My Portfolio</b></p>
+
+        <h1><b>Projects:</b></h1>
+
+        <div>
+            {% for project in projects %}
+            <h2><b>TITLE</b></h2>
+            <h3>{{ project.title }}</h3>
+            <h2><b>DESCRIPTION </b></h2>
+            <h3>{{ project.description }}</h3>
+            <h2><b>IMAGE</b></h2>
+            <img src="{{ project.image.url }}" alt="Project Image">
+            {% endfor %}
+            <h2><b>LINK</b></h2>
+            <h3><a href="{{ project.url }}">IR A LA WEB DE IES SANCLEMENTE</a></h3>
+        </div>
+    </div>
+</body>
+
+</html>
