@@ -30,6 +30,15 @@
             background-color: #ffffff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
+        .blog-description {
+            background-color: #ffffff;
+            padding: 20px;
+            max-width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
@@ -38,6 +47,7 @@
         <div class="text-center">
             <h1 class="blog-title display-4">MY BLOG!!!!</h1>
             <p class="lead">Welcome to <b>My BLOG</b></p>
+            <h3 class="blog-title">This page has <b>{{ blogs.count }} blog{{ blogs.count|pluralize }}</b>.</h3>
         </div>
 
         <div class="row justify-content-center">
@@ -45,12 +55,14 @@
                 {% for blog in blogs %}
                 <div class="blog-post my-4">
                     <h2 class="text-primary">{{ blog.title }}</h2>
-                    <p class="blog-date">Published on: {{ blog.date }}</p>
-                    <p>{{ blog.description }}</p>
+                    <p class="blog-date">Published on: <b>{{ blog.date|date:'M d Y'|upper }}</b></p>
+                    <p class="blog-description">{{ blog.description|striptags|truncatechars:100 }}</p>
+                    <a href="{% url 'blog:detail' blog.id %}">Leer más</a>
                 </div>
                 {% endfor %}
             </div>
         </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
